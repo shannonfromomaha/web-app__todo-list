@@ -20,6 +20,12 @@ MyApp.post "/newitem" do
   redirect "/todos/new"
 end
 
+MyApp.post "/updatelist" do
+  
+  redirect "/todos/new"  
+end
+
+
 #DB.define_table("todos")
 #DB.define_column("todos", "title", "string")
 #DB.define_column("todos", "description", "text")

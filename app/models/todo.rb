@@ -1,5 +1,12 @@
 class Todo < ActiveRecord::Base
-  
+  def update(array)
+    array.each do |item|
+      c = Todo.find_by_id(item)
+      c.completed
+
+
+    end
+  end
 end
 
 #DB.define_table("todos")

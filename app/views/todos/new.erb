@@ -11,10 +11,14 @@ To Do List for <%=@currentuser.name%>
 </form>
 
 <%if @items%>
-  Current To Dos
-  <% @items.each do |item|%>
-    <b><%=item.title%></b>
-    <%=item.description%>
-  <%end%>
+  <form action="/updatelist" method="post">
+      Current To Dos
+      <% @items.each do |item|%>
+        <dl>
+          <dt><input type="checkbox" name="items[]" value="<%= item.id %>">
+          <label><b><%=item.title%></b></dt>
+          <dd> <%=item.description%> </dd>
+        </dl>
+      <%end%>
+  </form>
 <%end%>
-    
