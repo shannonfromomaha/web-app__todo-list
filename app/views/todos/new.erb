@@ -6,17 +6,23 @@
       <h2>Current To Dos</h2> 
       <% @items.each do |item|%>
         <dl>
-          <dt><input type="checkbox" name="items[]" value="<%= item.id %>">
+          <dt><input type="checkbox" name="items[]" value="<%= item.id %>"
+          <%= "checked" if item.completed == true%>>
           <label><b><%=item.title%></b></dt>
           <dd> <%=item.description%> </dd>
         </dl>
       <%end%>
-      <input type="Submit" value="I DID IT!"></input>
+      <p></p>
+      <p></p>
+      <input type="Submit" value="UPDATE LIST"></input>
   </form>
 <%end%>
-
+<p></p>
+<p></p>
+<p></p>
+<p></p>
 <form action="/newitem" method="post">
-  <legend>New To Do</legend>
+  <legend><h2>New To Do</h2></legend>
   <label for="thing_to_do">Thing To Do</label>
   <input type="string" name="title"></input>
   <label for="description">Description</label>
@@ -25,15 +31,9 @@
   <input type="submit" value="Add to List!"></input>
 </form>
 
-<%if @items%>
-  <form action="/updatelist" method="post">
-      <h3>Done Did Its</h3> 
-      <% @items.each do |item|%>
-        <dl>
-          <dt><input type="checkbox" name="items[]" value="<%= item.id %>">
-          <label><b><%=item.title%></b></dt>
-          <dd> <%=item.description%> </dd>
-        </dl>
-      <%end%>
-  </form>
-<%end%>
+<p></p>
+<p></p>
+
+<form action="/todos/delete" method="get">
+  <input type "Submit" value="Clean Up This List"></input>
+</form>

@@ -1,12 +1,20 @@
 class Todo < ActiveRecord::Base
+  #write a tessssst for thiiiiiiiiis
   def self.update(array)
     array.each do |item|
       c = Todo.find_by_id(item)
-      binding.pry
       c.completed = !c.completed
       c.save
     end
   end
+
+  def self.delete_items(array)
+    array.each do |item|
+    c = Todo.find_by_id(item)
+    c.completed = !c.completed
+    c.save
+  end
+
 end
 
 #DB.define_table("todos")

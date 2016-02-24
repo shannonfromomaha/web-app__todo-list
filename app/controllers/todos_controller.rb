@@ -25,6 +25,15 @@ MyApp.post "/updatelist" do
   redirect "/todos/new"  
 end
 
+MyApp.get "/todos/delete" do
+  erb :"/todos/delete"
+end
+
+MyApp.post "/deleteitems" do
+  redirect "/todos/new"
+end
+
+
 
 #DB.define_table("todos")
 #DB.define_column("todos", "title", "string")
