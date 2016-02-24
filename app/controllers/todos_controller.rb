@@ -26,10 +26,14 @@ MyApp.post "/updatelist" do
 end
 
 MyApp.get "/todos/delete" do
+  @currentuser = User.find_by_id(session["user_id"])
+  @items = Todo.where("user_id" => @currentuser.id)
   erb :"/todos/delete"
 end
 
 MyApp.post "/deleteitems" do
+  array = params[:items]
+  Todo.delete(array)
   redirect "/todos/new"
 end
 
