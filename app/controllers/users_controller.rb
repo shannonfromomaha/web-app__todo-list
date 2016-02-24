@@ -30,6 +30,13 @@ MyApp.post "/updateuser/:id" do
   erb :"/users/success"  
 end 
 
+MyApp.post "/deleteuser/:id" do
+  u = User.find_by_id(params[:id])
+  #something that deletes their to-do lists
+  u.delete
+  erb :"/users/deletesuccess"
+end
+
 #DB.define_table("users")
 #DB.define_column("users", "name", "string")
 #DB.define_column("users", "email", "string")
