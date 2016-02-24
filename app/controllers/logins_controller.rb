@@ -3,6 +3,11 @@ MyApp.get "/logins/new" do
 
 end
 
+MyApp.post "/deletelogin" do
+  session["user_id"] = nil
+  erb :"/logins/logout"
+end
+
 MyApp.post "/newlogin" do
   @currentuser = User.find_by_email(params[:email])
   if @currentuser == nil
