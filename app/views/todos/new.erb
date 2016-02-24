@@ -1,4 +1,19 @@
-To Do List for <%=@currentuser.name%>
+<h1>To Do List for <%=@currentuser.name%></h1>
+
+
+<%if @items%>
+  <form action="/updatelist" method="post">
+      <h2>Current To Dos</h2> 
+      <% @items.each do |item|%>
+        <dl>
+          <dt><input type="checkbox" name="items[]" value="<%= item.id %>">
+          <label><b><%=item.title%></b></dt>
+          <dd> <%=item.description%> </dd>
+        </dl>
+      <%end%>
+      <input type="Submit" value="I DID IT!"></input>
+  </form>
+<%end%>
 
 <form action="/newitem" method="post">
   <legend>New To Do</legend>
@@ -12,7 +27,7 @@ To Do List for <%=@currentuser.name%>
 
 <%if @items%>
   <form action="/updatelist" method="post">
-      Current To Dos
+      <h3>Done Did Its</h3> 
       <% @items.each do |item|%>
         <dl>
           <dt><input type="checkbox" name="items[]" value="<%= item.id %>">

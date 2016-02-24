@@ -1,10 +1,10 @@
 class Todo < ActiveRecord::Base
-  def update(array)
+  def self.update(array)
     array.each do |item|
       c = Todo.find_by_id(item)
-      c.completed
-
-
+      binding.pry
+      c.completed = !c.completed
+      c.save
     end
   end
 end

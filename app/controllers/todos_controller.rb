@@ -6,7 +6,6 @@ end
 MyApp.get "/todos/new" do
   @currentuser = User.find_by_id(session["user_id"])
   @items = Todo.where("user_id" => @currentuser.id)
-  binding.pry
   erb :"/todos/new"
 end
 
@@ -21,7 +20,8 @@ MyApp.post "/newitem" do
 end
 
 MyApp.post "/updatelist" do
-  
+  array = params[:items]
+  Todo.update(array)
   redirect "/todos/new"  
 end
 
