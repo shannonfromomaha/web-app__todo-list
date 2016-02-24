@@ -4,9 +4,9 @@ MyApp.get "/" do
 end
 
 MyApp.get "/todos/new" do
+  @currentuser = User.find_by_id(session["user_id"])
+  @items = Todo.where("user_id" => @currentuser.id)
   binding.pry
-  @current_user = User.find_by_id(session["user_id"])
-  @items
   erb :"/todos/new"
 end
 
@@ -17,7 +17,7 @@ MyApp.post "/newitem" do
   t.completed = false
   t.user_id = params[:user_id]
   t.save
-  erb :"/todos/new"
+  redirect "/todos/new"
 end
 
 #DB.define_table("todos")
