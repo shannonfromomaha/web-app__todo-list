@@ -4,37 +4,60 @@ MyApp.get "/" do
 end
 
 MyApp.get "/todos/new" do
-  @currentuser = User.find_by_id(session["user_id"])
-  @items = Todo.where("user_id" => @currentuser.id)
-  erb :"/todos/new"
+  @currentuser = User.find_by_id(session["user_id"]) 
+  if @currentuser != nil
+    @items = Todo.where("user_id" => @currentuser.id)
+    erb :"/todos/new"
+  else
+    erb :"/logins/new"
+  end
 end
 
 MyApp.post "/newitem" do
-  t = Todo.new
-  t.title = params[:title]
-  t.description = params[:description]
-  t.completed = false
-  t.user_id = params[:user_id]
-  t.save
-  redirect "/todos/new"
+  @currentuser = User.find_by_id(session["user_id"])
+  if @currentuser != nil
+    t = Todo.new
+    t.title = params[:title]
+    t.description = params[:description]
+    t.completed = false
+    t.user_id = params[:user_id]
+    t.save
+    redirect "/todos/new"
+  else
+    erb :"logins/new"
+  end
 end
 
 MyApp.post "/updatelist" do
-  array = params[:items]
-  Todo.update(array)
-  redirect "/todos/new"  
+  @currentuser = User.find_by_id(session["user_id"])
+  if @currentuser != nil
+    array = params[:items]
+    Todo.update(array)
+    redirect "/todos/new"  
+  else
+    erb :"/logins/new"
+  end
 end
 
 MyApp.get "/todos/delete" do
   @currentuser = User.find_by_id(session["user_id"])
-  @items = Todo.where("user_id" => @currentuser.id)
-  erb :"/todos/delete"
+  if @currentuser != nil
+    @items = Todo.where("user_id" => @currentuser.id)
+    erb :"/todos/delete"
+  else
+    erb :"/logins/new"
+  end
 end
 
 MyApp.post "/deleteitems" do
-  array = params[:items]
-  Todo.delete(array)
-  redirect "/todos/new"
+  @currentuser = User.find_by_id(session["user_id"])
+  if @currentuser != nil
+    array = params[:items]
+    Todo.delete(array)
+    redirect "/todos/new"
+  else
+    erb :"/logins/new"
+  end
 end
 
 

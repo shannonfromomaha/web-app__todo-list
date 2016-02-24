@@ -1,6 +1,4 @@
 <h1>To Do List for <%=@currentuser.name%></h1>
-
-
 <%if @items%>
   <form action="/updatelist" method="post">
       <h2>Current To Dos</h2> 
@@ -36,4 +34,12 @@
 
 <form action="/todos/delete" method="get">
   <input type="Submit" value="Clean Up This List"></input>
+</form>
+
+<form action="/users/update/1" method ="get">
+  <input type="Submit" value="Update User Info"></input>
+</form>
+
+<form action="/deletelogin" method ="post">
+  <input type="Submit" value="Log Out"></input>
 </form>

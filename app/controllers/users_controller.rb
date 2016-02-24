@@ -14,20 +14,26 @@ MyApp.post "/newuser" do
 end
 
 MyApp.get "/users/update/:id" do
-  #if logged in, load logged in info
-  #if not logged in, ask for log in first
-  @currentuser = User.find_by_id(params[:id])
-  erb :"/users/update"
+  @currentuser = User.find_by_id(session["user_id"])
+  if @currentuser != nil
+    erb :"/users/update"
+  else
+    erb :"/logins/new"
+  end
 end
 
 MyApp.post "/updateuser/:id" do
-  u = User.find_by_id(params[:id])
-  u.name = params[:name]
-  u.email = params[:email]
-  u.password = params[:password]
-  u.save
-  @user = u
-  erb :"/users/success"  
+  @currentuser = User.find_by_id(session["user_id"])
+  if @currentuser != nil
+    u = User.find_by_id(params[:id])
+    u.name = params[:name]
+    u.email = params[:email]
+    u.password = params[:password]
+    u.save
+    erb :"/users/success"  
+  else
+    erb :"/logins/new"
+  end
 end 
 
 MyApp.post "/deleteuser/:id" do
