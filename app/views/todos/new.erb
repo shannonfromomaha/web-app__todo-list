@@ -1,0 +1,19 @@
+New To Do List for <%=@currentuser.name%>
+
+<form action="/newitem" method="post">
+  <legend>New To Do</legend>
+  <label for="thing_to_do">Thing To Do</label>
+  <input type="string" name="title"></input>
+  <label for="description">Description</label>
+  <input type="text" name="description"></input>
+  <input type="hidden" name="user_id" value="<%=@currentuser.id%>"></input>
+</form>
+
+<%if @items%>
+  Current To Dos
+  <% @items.each do |item|%>
+    <b><%=item.title%></b>
+    <%=item.description%>
+  <%end%>
+<%end%>
+    
