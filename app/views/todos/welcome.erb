@@ -1,10 +1,50 @@
-<h1>Welcome!</h1>
+<h1>To Do List</h1>
 
-
-<form action="/logins/new" method ="get">
-  <input type="Submit" value="Log In"></input>
-</form> 
+<%if @items%>
+  <form action="/updatelist" method="post">
+      <h2>Current To Dos</h2> 
+      <% @items.each do |item|%>
+        <dl>
+          <dt><input type="checkbox" name="items[]" value="<%= item.id %>"
+          <%= "checked" if item.completed == true%>>
+          <label><b><%=item.title%></b></dt>
+          <dd> <%=item.description%> </dd>
+        </dl>
+      <%end%>
+      <p></p>
+      <p></p>
+      <input type="Submit" value="UPDATE LIST"></input>
+  </form>
+<%end%>
+#we'll need to add Assigned to: Created by:
 <p></p>
-<form action="/users/new" method ="get">
-  <input type="Submit" value="Create New User"></input>
+<p></p>
+
+<form action="todos/newitem" method="post">
+  <legend><h2>New To Do</h2></legend>
+  <label for="thing_to_do">Thing To Do</label>
+  <input type="string" name="title"></input>
+  <label for="description">Description</label>
+  <input type="text" name="description"></input>
+  <input type="hidden" name="user_id" value="<%=@currentuser.id%>"></input>
+  <input type="submit" value="Add to List!"></input>
+</form>
+#add drop down of assignment
+<p></p>
+<p></p>
+
+<form action="/todos/delete" method="get">
+  <input type="Submit" value="Clean Up/Edit This List"></input>
+</form>
+
+<p></p>
+
+<form action="/users/update/#{@currentuser.id}" method ="get">
+  <input type="Submit" value="Update User Info"></input>
+</form>
+
+<p></p>
+
+<form action="logins/delete" method ="post">
+  <input type="Submit" value="Log Out"></input>
 </form>
