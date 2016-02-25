@@ -1,8 +1,4 @@
 # This controller is for all the CRUD operations related to a Todo.
-MyApp.get "/" do 
-  erb :"/todos/welcome"
-end
-
 MyApp.before "/todos*" do
   @currentuser = User.find_by_id(session["user_id"]) 
   if @currentuser != nil
@@ -10,8 +6,14 @@ MyApp.before "/todos*" do
   end
 end
 
+MyApp.get "/" do 
+  erb: "/logins/new"
+end
+
+
 MyApp.get "/todos/welcome" do
   @items = Todo.all
+end
 
 MyApp.get "/todos/new" do
   #as it stands, 
@@ -29,7 +31,7 @@ MyApp.post "/todos/newitem" do
   #needs assignment id today
   #needs a category id today
   t.save
-  redirect "/todos/new"
+  redirect "/todos/welcome"
 end
 
 MyApp.post "/todos/update" do

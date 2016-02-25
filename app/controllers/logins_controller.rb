@@ -1,3 +1,8 @@
+
+MyApp.get "/" do 
+  erb :"/logins/new"
+end
+
 MyApp.get "/logins/new" do 
   erb :"/logins/new"
 
