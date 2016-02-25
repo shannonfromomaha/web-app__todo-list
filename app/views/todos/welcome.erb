@@ -2,7 +2,7 @@
 <h1>To Do List</h1>
 
 <%if @items%>
-  <form action="/todos/update" method="post">
+  <form action="/todos/toggle" method="post">
       <h2>Current To Dos</h2> 
       <% @items.each do |item|%>
         <dl>
@@ -34,7 +34,7 @@
 <p></p>
 <p></p>
 
-<form action="/todos/delete" method="get">
+<form action="/todos/edit" method="get">
   <input type="Submit" value="Clean Up/Edit This List"></input>
 </form>
 

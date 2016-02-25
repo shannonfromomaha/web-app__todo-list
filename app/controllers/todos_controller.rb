@@ -30,24 +30,24 @@ MyApp.post "/todos/newitem" do
   redirect "/todos/welcome"
 end
 
-MyApp.post "/todos/update" do
+MyApp.post "/todos/toggle" do
   #this marks a thing as done or not done
   array = params[:items]
   Todo.update(array)
-  redirect "/todos/new"  
+  redirect "/todos/welcome"  
 end
 
 #these two are messy now bc you might not want to delete--
 #just reassign or rename a task
 MyApp.get "/todos/edit" do
-  @items = Todo.where("user_id" => @currentuser.id)
-  erb :"/todos/delete"
+  @items = Todo.all
+  erb :"/todos/edit"
 end
 #so post todos/delete should actually be ON edit page
-MyApp.post "/todos/delete" do
+MyApp.post "/todos/update" do
   array = params[:items]
   Todo.delete(array)
-  redirect "/todos/new"
+  redirect "/todos/edit"
 end
 
 #DB.define_table("todos")

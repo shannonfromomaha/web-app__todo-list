@@ -1,0 +1,47 @@
+edit
+
+<h1>Clean Up List</h1>
+
+<h2>choose items to remove from list</h2>
+<h3>Please note, if you "uncheck" a completed task, it will stay completed on your to-do list.</h3>
+
+<form action="todos/update" method="post">
+    <h2>Current To Dos</h2> 
+    <% @items.each do |item|%>
+      <dl>
+        <dt><label for="thing_to_do">Thing To Do</label>
+        <input type="string" name="title" value="<%=item.title%>"></input></dt>
+        
+        <dd><label for="description">Description</label>
+        <input type="text" name="description" value="<%=item.description%>">
+        </input></dd>
+        
+        <dd><label for="category">Category</label></dd>
+        ###dropdown menu of categories
+        <input></input>
+        
+        <dd><label for="assigned_to">Assigned To</label>
+        ###drop down menue of users
+        <input type=></input></dd>
+        
+        <dd><label for "completed">Completed?</label>
+        ###radial buttons Complete/Incomplete
+        <input></input></dd>
+        
+      </dl>
+    <%end%>
+    <p></p>
+    <p></p>
+    <input type="Submit" value="UPDATE THE LIST"></input>
+</form>
+
+
+
+
+DB.define_table("todos")
+DB.define_column("todos", "title", "string")
+DB.define_column("todos", "description", "text")
+DB.define_column("todos", "completed", "boolean")
+DB.define_column("todos", "user_id", "integer")
+DB.define_column("todos", "assigned_id","integer") #this one's new
+#DB.define_column("todos", "category_id", "integer") #add this one later

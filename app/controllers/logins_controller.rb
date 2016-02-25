@@ -18,7 +18,7 @@ MyApp.post "/newlogin" do
     erb :"/logins/fail"
   elsif @currentuser.password == params[:password]
     session["user_id"] = @currentuser.id
-    erb :"/todos/new"
+    redirect "/todos/welcome"
   else
     erb :"/logins/fail"
   end
