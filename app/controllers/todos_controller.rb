@@ -43,7 +43,13 @@ MyApp.get "/todos/edit" do
   @items = Todo.all
   erb :"/todos/edit"
 end
-#so post todos/delete should actually be ON edit page
+
+MyApp.post "/todos/update" do
+  #have to put in some drop downs and radials
+  redirect "/todos/edit"
+end
+
+#delete function is on the EDIT page
 MyApp.post "/todos/delete" do
   array = params[:items]
   Todo.delete(array)
