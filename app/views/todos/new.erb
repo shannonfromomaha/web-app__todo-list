@@ -1,4 +1,5 @@
 <h1>To Do List for <%=@currentuser.name%></h1>
+
 <%if @items%>
   <form action="/updatelist" method="post">
       <h2>Current To Dos</h2> 
@@ -15,11 +16,11 @@
       <input type="Submit" value="UPDATE LIST"></input>
   </form>
 <%end%>
+
 <p></p>
 <p></p>
-<p></p>
-<p></p>
-<form action="/newitem" method="post">
+
+<form action="todos/newitem" method="post">
   <legend><h2>New To Do</h2></legend>
   <label for="thing_to_do">Thing To Do</label>
   <input type="string" name="title"></input>
@@ -36,10 +37,14 @@
   <input type="Submit" value="Clean Up This List"></input>
 </form>
 
-<form action="/users/update/1" method ="get">
+<p></p>
+
+<form action="/users/update/#{@currentuser.id}" method ="get">
   <input type="Submit" value="Update User Info"></input>
 </form>
 
-<form action="/deletelogin" method ="post">
+<p></p>
+
+<form action="logins/delete" method ="post">
   <input type="Submit" value="Log Out"></input>
 </form>

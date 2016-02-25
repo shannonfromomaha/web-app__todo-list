@@ -10,3 +10,5 @@ DB.define_column("todos", "title", "string")
 DB.define_column("todos", "description", "text")
 DB.define_column("todos", "completed", "boolean")
 DB.define_column("todos", "user_id", "integer")
+DB.define_column("todos", "assigned_id","integer") #this one's new
+#DB.define_column("todos", "category_id", "integer") #add this one later
