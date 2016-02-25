@@ -5,6 +5,9 @@ DB.define_column("users", "name", "string")
 DB.define_column("users", "email", "string")
 DB.define_column("users", "password", "string")
 
+DB.define_table("categories")
+DB.define_column("categories","name","string")
+
 DB.define_table("todos")
 DB.define_column("todos", "title", "string")
 DB.define_column("todos", "description", "text")

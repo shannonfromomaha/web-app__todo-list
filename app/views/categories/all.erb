@@ -1,0 +1,16 @@
+CATEGORIES
+
+<% if @categories != nil%>
+  To-Do Categories
+  <% @categories.each do |category| %>
+    <%= category.name %>
+  <% end %>
+<% end %>
+
+<form action="/categories/new" method="post">
+  <legend><h2>New To Do</h2></legend>
+  <label for="category">New Category</label>
+  <input type="string" name="name"></input>
+  <input type="submit" value="Add This Category!"></input>
+</form>
+
