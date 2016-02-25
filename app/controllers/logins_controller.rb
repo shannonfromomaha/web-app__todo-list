@@ -5,7 +5,6 @@ end
 
 MyApp.get "/logins/new" do 
   erb :"/logins/new"
-
 end
 
 MyApp.post "/deletelogin" do
