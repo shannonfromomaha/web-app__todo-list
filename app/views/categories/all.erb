@@ -1,16 +1,30 @@
-CATEGORIES
-
-<% if @categories != nil%>
+<% if @categories != nil %>
   To-Do Categories
+
   <% @categories.each do |category| %>
-    <%= category.name %>
+    <ol><%= category.name %></ol>
   <% end %>
 <% end %>
 
 <form action="/categories/new" method="post">
-  <legend><h2>New To Do</h2></legend>
+  <legend><h2>Add New</h2></legend>
   <label for="category">New Category</label>
   <input type="string" name="name"></input>
   <input type="submit" value="Add This Category!"></input>
+</form>
+
+
+
+<form action="/categories/delete" method="post">
+    <h2>Remove Categories</h2> 
+    <% @categories.each do |category|%>
+      <dl>
+        <input type="checkbox" name="categories[]" value="<%= category.id %>"
+        <label><b><%=category.name%></b>
+      </dl>
+    <%end%>
+    <p></p>
+    <p></p>
+    <input type="Submit" value="REMOVE ITEMS FROM LIST"></input>
 </form>
 
