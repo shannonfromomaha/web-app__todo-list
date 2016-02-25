@@ -44,7 +44,7 @@ MyApp.get "/todos/edit" do
   erb :"/todos/edit"
 end
 #so post todos/delete should actually be ON edit page
-MyApp.post "/todos/update" do
+MyApp.post "/todos/delete" do
   array = params[:items]
   Todo.delete(array)
   redirect "/todos/edit"
