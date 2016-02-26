@@ -41,6 +41,8 @@ end
 #just reassign or rename a task
 MyApp.get "/todos/edit" do
   @items = Todo.all
+  @users = User.all
+  @categories = Category.all
   erb :"/todos/edit"
 end
 

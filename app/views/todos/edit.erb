@@ -16,13 +16,23 @@ edit
         <input type="text" name="description" value="<%=item.description%>">
         </input></dd>
         
-        <dd><label for="category">Category</label></dd>
-        ###dropdown menu of categories
-        <input></input>
+        <dd><label for="category">Category</label>
+        <select name = "category">
+            <option disabled>Choose a Category</option>
+            <% @categories.each do |cat| %>
+                <option value="<%= cat.id %>"><%= cat.name %>
+                </option>
+            <% end%>
+        </select></dd>
         
         <dd><label for="assigned_to">Assigned To</label>
-        ###drop down menue of users
-        <input type=></input></dd>
+        <select name = "assigned">
+            <option disabled>Assigned to...</option>
+            <% @users.each do |user| %>
+                <option value="<%= user.id %>"><%= user.name %>
+                </option>
+            <% end%>
+        </select>
         
         <dd><label for "completed">Completed?</label>
         ###radial buttons Complete/Incomplete
