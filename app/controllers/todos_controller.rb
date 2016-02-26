@@ -8,6 +8,8 @@ end
 
 MyApp.get "/todos/welcome" do
   @items = Todo.all
+  @users = User.all
+  @categories = Category.all
   erb :"/todos/welcome"
 end
 
@@ -47,7 +49,13 @@ MyApp.get "/todos/edit" do
 end
 
 MyApp.post "/todos/update" do
-  #have to put in some drop downs and radials
+  binding.pry
+  c = Todo.find_by_id(params[:id])
+  c.title = params[:title]
+  c.description = params[:description]
+  c.category_id = params[:category]
+  c.assigned_id = params[:assigned]
+  c.save
   redirect "/todos/edit"
 end
 

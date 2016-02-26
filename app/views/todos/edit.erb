@@ -1,14 +1,10 @@
-edit
-
 <h1>Clean Up List</h1>
 
-<h2>choose items to remove from list</h2>
-<h3>Please note, if you "uncheck" a completed task, it will stay completed on your to-do list.</h3>
-
-<form action="todos/update" method="post">
+<form action="/todos/update" method="post">
     <h2>Current To Dos</h2> 
     <% @items.each do |item|%>
       <dl>
+        <input type="hidden" name="id" value="<%=item.id%>"></input>
         <dt><label for="thing_to_do">Thing To Do</label>
         <input type="string" name="title" value="<%=item.title%>"></input></dt>
         
@@ -17,7 +13,7 @@ edit
         </input></dd>
         
         <dd><label for="category">Category</label>
-        <select name = "category">
+        <select name="category">
             <option disabled>Choose a Category</option>
             <% @categories.each do |cat| %>
                 <option value="<%= cat.id %>"><%= cat.name %>
@@ -35,14 +31,16 @@ edit
         </select>
         
         <dd><label for "completed">Completed?</label>
-        ###radial buttons Complete/Incomplete
-        <input></input></dd>
-        
+        <input type="radio" name="completed" value="true"> Done
+        <input type="radio" name="completed" value="false"> Not Done
+
+        <dd><input type="Submit" value="UPDATE THE LIST"></input></dd>
+
       </dl>
     <%end%>
     <p></p>
     <p></p>
-    <input type="Submit" value="UPDATE THE LIST"></input>
+    
 </form>
 
 <h2>choose items to remove from list</h2>

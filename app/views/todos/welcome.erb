@@ -23,10 +23,31 @@
 
 <form action="/todos/newitem" method="post">
   <legend><h2>New To Do</h2></legend>
+
   <label for="thing_to_do">Thing To Do</label>
   <input type="string" name="title"></input>
+
+  <label for="category">Category</label>
+  <select name="category">
+    <option disabled>Choose a Category</option>
+    <% @categories.each do |cat| %>
+        <option value="<%= cat.id %>"><%= cat.name %>
+        </option>
+    <% end%>
+  </select>
+
   <label for="description">Description</label>
   <input type="text" name="description"></input>
+
+  <label for="assigned_to">Assigned To</label>
+    <select name = "assigned">
+        <option disabled>Assigned to...</option>
+        <% @users.each do |user| %>
+            <option value="<%= user.id %>"><%= user.name %>
+            </option>
+        <% end%>
+    </select>
+
   <input type="hidden" name="user_id" value="<%=@currentuser.id%>"></input>
   <input type="submit" value="Add to List!"></input>
 </form>
