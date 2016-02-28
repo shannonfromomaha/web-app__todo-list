@@ -38,7 +38,7 @@ end
 
 MyApp.post "/deleteuser/:id" do
   u = User.find_by_id(params[:id])
-  #something that deletes their to-do lists
+  Assignment.delete_user(u)
   u.delete
   erb :"/users/deletesuccess"
 end

@@ -8,6 +8,12 @@ class Assignment < ActiveRecord::Base
     end
   end
 
+  def self.delete_user(user)
+    a = Assignment.where("user_id" => user.id)
+    a.each do |a|
+      a.delete
+    end
+  end
 
 end
 

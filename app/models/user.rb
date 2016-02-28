@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
       return true
     end
   end
+
 end
 
 #DB.define_table("users")
