@@ -61,6 +61,7 @@ end
 #delete function is on the EDIT page
 MyApp.post "/todos/delete" do
   array = params[:items]
+  Assignment.delete_assignments(array)
   Todo.delete(array)
   redirect "/todos/edit"
 end
