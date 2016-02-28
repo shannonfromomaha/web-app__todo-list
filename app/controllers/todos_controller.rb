@@ -26,9 +26,8 @@ MyApp.post "/todos/newitem" do
   t.description = params[:description]
   t.completed = false
   t.user_id = params[:user_id]
-  #needs assignment id today
-  #needs a category id today
   t.save
+  t.assign(params[:users])
   redirect "/todos/welcome"
 end
 
@@ -53,8 +52,8 @@ MyApp.post "/todos/update" do
   c.title = params[:title]
   c.description = params[:description]
   c.category_id = params[:category]
-  c.assigned_id = params[:assigned]
   c.save
+  c.assign(params[:users])
   redirect "/todos/edit"
 end
 

@@ -27,6 +27,16 @@ class Todo < ActiveRecord::Base
     return cat =Category.find_by_id(x)
   end
 
+  def assign(userarray)
+    x = self.id
+    userarray.each do |assign|
+      a = Assignment.new
+      a.todo_id = x
+      a.user_id = assign
+      a.save
+    end
+  end
+
 end
 
 #DB.define_table("todos")
