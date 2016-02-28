@@ -30,8 +30,9 @@
 
         
         <dd><label for "completed">Completed?</label>
-        <input type="radio" name="completed" value="true"> Done
-        <input type="radio" name="completed" value="false"> Not Done
+        <input type="radio" name="completed" value="true" <%= checked = "checked" if item.completed == true %> > Done
+
+        <input type="radio" name="completed" value="false" <%= checked = "checked" if item.completed == false %> > Not Done
 
         <dd><input type="Submit" value="UPDATE THE LIST"></input></dd>
 
