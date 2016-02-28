@@ -7,9 +7,9 @@ MyApp.get "/logins/new" do
   erb :"/logins/new"
 end
 
-MyApp.post "/deletelogin" do
+MyApp.post "/logins/delete" do
   session["user_id"] = nil
-  erb :"/logins/logout"
+  redirect "/logins/new"
 end
 
 MyApp.post "/newlogin" do

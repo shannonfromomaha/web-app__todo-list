@@ -13,7 +13,7 @@ MyApp.post "/newuser" do
   erb :"/users/success"  
 end
 
-MyApp.get "/users/update/:id" do
+MyApp.get "/users/update" do
   @currentuser = User.find_by_id(session["user_id"])
   if @currentuser != nil
     erb :"/users/update"
@@ -22,10 +22,10 @@ MyApp.get "/users/update/:id" do
   end
 end
 
-MyApp.post "/updateuser/:id" do
+MyApp.post "/updateuser" do
   @currentuser = User.find_by_id(session["user_id"])
   if @currentuser != nil
-    u = User.find_by_id(params[:id])
+    u = User.find_by_id(@currentuser.id)
     u.name = params[:name]
     u.email = params[:email]
     u.password = params[:password]
