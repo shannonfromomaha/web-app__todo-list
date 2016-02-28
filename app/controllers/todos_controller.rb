@@ -53,6 +53,7 @@ MyApp.post "/todos/update" do
   c.description = params[:description]
   c.category_id = params[:category]
   c.save
+  binding.pry
   c.assign(params[:users])
   redirect "/todos/edit"
 end

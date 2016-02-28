@@ -23,7 +23,8 @@
         
         <dd><label for="assigned_to">Assigned To</label>
             <% @users.each do |user| %>
-              <input type="checkbox" name="users[]" value="<%= user.id %>">
+              <input type="checkbox" name="users[]" value="<%= user.id %>"
+              <%= "checked" if user.find_assignment(item) == true %>>
               <label><%= user.name %> 
             <% end %>
 
@@ -36,9 +37,6 @@
 
       </dl>
     <%end%>
-    <p></p>
-    <p></p>
-    
 </form>
 
 <h2>choose items to remove from list</h2>
