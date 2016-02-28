@@ -22,13 +22,11 @@
         </select></dd>
         
         <dd><label for="assigned_to">Assigned To</label>
-        <select name = "assigned">
-            <option disabled>Assigned to...</option>
             <% @users.each do |user| %>
-                <option value="<%= user.id %>"><%= user.name %>
-                </option>
-            <% end%>
-        </select>
+              <input type="checkbox" name="users[]" value="<%= user.id %>">
+              <label><%= user.name %> 
+            <% end %>
+
         
         <dd><label for "completed">Completed?</label>
         <input type="radio" name="completed" value="true"> Done

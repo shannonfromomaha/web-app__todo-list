@@ -49,7 +49,6 @@ MyApp.get "/todos/edit" do
 end
 
 MyApp.post "/todos/update" do
-  binding.pry
   c = Todo.find_by_id(params[:id])
   c.title = params[:title]
   c.description = params[:description]

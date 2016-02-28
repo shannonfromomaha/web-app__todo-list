@@ -39,20 +39,15 @@
   <label for="description">Description</label>
   <input type="text" name="description"></input>
 
-  <label for="assigned_to">Assigned To</label>
-    <select name = "assigned">
-        <option disabled>Assigned to...</option>
-        <% @users.each do |user| %>
-            <option value="<%= user.id %>"><%= user.name %>
-            </option>
-        <% end%>
-    </select>
+  <label for="assigned_to">Assigned To: </label>
+    <% @users.each do |user| %>
+      <input type="checkbox" name="users[]" value="<%= user.id %>">
+      <label><%= user.name %> 
+    <% end %>
 
   <input type="hidden" name="user_id" value="<%=@currentuser.id%>"></input>
   <input type="submit" value="Add to List!"></input>
 </form>
-#add drop down of category
-#add drop down of assignment
 <p></p>
 <p></p>
 
