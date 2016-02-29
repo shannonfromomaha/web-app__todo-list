@@ -17,7 +17,7 @@
           
           <dd> Description: <%=item.description%> </dd>
 
-          <dd> LIST OF PEOPLE ASSIGNED TO IT </dd>
+          <dd> Assigned to: <%=item.find_assigned.join(", ")%> </dd>
 
           <dd> Created by: <%= item.find_creator%></dd>
         </dl>

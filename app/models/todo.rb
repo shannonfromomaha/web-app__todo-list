@@ -22,8 +22,12 @@ class Todo < ActiveRecord::Base
   end
 
   def find_assigned
-    x = self.assigned_id
-    return user = User.find_by_id(x)
+    x = Assignment.where("todo_id" => self.id)
+    usernames = []
+    x.each do |assignment|
+      usernames << User.find_by_id(assignment.user_id).name
+    end
+    return usernames
   end
 
   def find_category
