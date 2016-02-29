@@ -4,12 +4,22 @@
 <%if @items%>
   <form action="/todos/toggle" method="post">
       <h2>Current To Dos</h2> 
+     
       <% @items.each do |item|%>
         <dl>
+
           <dt><input type="checkbox" name="items[]" value="<%= item.id %>"
           <%= "checked" if item.completed == true%>>
+          
           <label><b><%=item.title%></b></dt>
-          <dd> <%=item.description%> </dd>
+
+          <dd> Category: <%=item.find_category.name%></dd>
+          
+          <dd> Description: <%=item.description%> </dd>
+
+          <dd> LIST OF PEOPLE ASSIGNED TO IT </dd>
+
+          <dd> Created by: <%= item.find_creator%></dd>
         </dl>
       <%end%>
       <p></p>

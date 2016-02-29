@@ -13,8 +13,12 @@ class Todo < ActiveRecord::Base
   end
 
   def find_creator
-    x = self.user_id
-    return user = User.find_by_id(x)
+    x = User.find_by_id(self.user_id)
+    if x == [] || x == nil
+      return "N/A"
+    else 
+      return x.name
+    end
   end
 
   def find_assigned
